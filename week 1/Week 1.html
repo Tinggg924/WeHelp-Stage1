@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="Week 1.css">
+</head>
+<body>
+    <nav>
+        <div class="title">My Website</div>
+        <ul  class="desktop-menu">
+            <li class="item">Item1</li>
+            <li class="item">Item2</li>
+            <li class="item">Item3</li>
+            <li class="item">Item4</li>
+            <div class="burger-menu" onclick="mobilemenu()">
+                <img src="burger.png" id="burger"/>
+            </div> 
+        </ul>
+        <div id="popupmenu" class="popup-menu">
+            <div class="close" onclick="closemenu()">x</div>
+            <li class="list">Item1</li>
+            <li class="list">Item2</li>
+            <li class="list">Item3</li>
+            <li class="list">Item4</li>
+        </div>
+       
+    </nav>
+
+    <div class="topic">Welcome to My Home</div>
+
+    <div class="maincontent">
+        <div class="titlepromotion">
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 1</div>
+            </div>
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 2</div>
+            </div>
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="maincontent">  
+        <div class="title-box">
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 1</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 2</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 3</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 4</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 5</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 6</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 7</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 8</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 9</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 10</div>
+            </div>
+        </div>       
+    </div>
+    <script>
+        function mobilemenu() {
+            let popupmenu = document.getElementById("popupmenu");
+            popupmenu.classList.toggle("active");
+        }
+
+        function closemenu() {
+            let popupmenu = document.getElementById("popupmenu");
+            popupmenu.classList.remove("active");
+        }
+    </script>
+    
+</body>
