@@ -1,0 +1,247 @@
+body{
+    margin: 0;
+    font-size: 20px;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.title{
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.desktop-menu{
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.item{
+    list-style-type: none;
+    padding-left: 10px;
+}
+.burger-menu{
+    display: none;
+    cursor: pointer;
+}
+#burger{
+    text-align: center;
+    width: 30px; height: 30px;
+    margin: 4px 10px 0 10px;
+}
+.popup-menu{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f5e8c8;
+    width: 50%; 
+    height: 100vh; 
+    border: 1px solid #ccc;
+    z-index: 1000; 
+}
+.popup-menu.active{
+    display: block;
+}
+.close{
+    position: absolute;
+    top: 1px;
+    right: 6px;
+    cursor: pointer;
+    font-size: 25px; 
+    color: #2c2c2c; 
+    margin: 0;
+}
+.list{
+    list-style-type: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.topic{
+    width:auto;height: 250px;
+    background-color: rgb(148, 200, 248);
+    text-align: center;
+    line-height: 250px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.maincontent{
+    width: 1200px; 
+    margin:0px auto;
+    justify-content: center;
+}
+.titlepromotion{
+    display: flex; width: 100%;
+    margin-top: 10px; margin-bottom: 10px;
+}
+
+.promotion{
+    background-color: lightblue; width: calc(100%/3 - 20px); height: 50px;
+    margin-left: 10px; margin-right: 10px;
+    display: flex;
+}
+
+.promotion image{
+    width: 80px;height: 50px;
+    object-fit: cover;
+}
+
+.promotion-title{
+    text-align: left;
+    line-height: 50px;
+    margin-left: 10px;
+}
+
+.title-box{
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.title-item{
+    width: calc((100% - 100%/3)/4 - 20px);
+    display: flex;
+    position: relative;
+    margin: 10px;
+}
+
+.title-item img{
+    width: 100%; height: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.titletext{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#icon{
+    width: 30px; height: 30px;
+    position: absolute; right: 0px; top: 2px;
+}
+
+.title-item:nth-child(1){
+    width:calc(100%/3 - 20px);
+}
+.title-item:nth-child(6){
+    width:calc(100%/3 - 20px);
+}
+
+
+@media (min-width:601px) and (max-width: 1200px){
+    /*螢幕寬度小於等於1200px，大於600px，套用這個區塊的CSS*/
+    .topic{
+        max-width: auto;
+        margin: 0;
+    }
+    .maincontent{
+        width: 90%;
+        display: flex;
+    }
+    .titlepromotion{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .promotion {
+        width: calc(50% - 20px);
+        margin-top: 10px;
+    }
+    .promotion:nth-child(3) { 
+        width: calc(100% - 20px); 
+        margin-top: 20px;
+    }
+
+    .title-box{
+        width: 100%; height: 500px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .title-item{
+        width: calc(25% - 20px);
+        height: calc(100%/3 - 20px );
+    }
+    .title-box .title-item:nth-child(1){
+        width: calc(25% - 20px);
+        height: calc(100%/3 - 20px );
+    }
+    .title-box .title-item:nth-child(6){
+        width: calc(25% - 20px);
+        height: calc(100%/3 - 20px );
+    }
+    .title-box .title-item:nth-child(9){
+        width: calc(50% - 20px);
+        height: calc(100%/3 - 20px);
+    }
+    .title-box .title-item:nth-child(10){
+        width: calc(50% - 20px);
+        height: calc(100%/3 - 20px);
+    }
+    #icon{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (min-width: 361px) and (max-width: 600px){
+    .item{
+        display: none;
+    }
+    .burger-menu{
+        display: block;
+        justify-content:flex-end;
+    }
+    .topic{
+        max-width: auto;
+        margin: 0;
+        font-size: clamp(1rem, 9.5vw, 2rem);;
+    }
+
+    .maincontent{
+        width: 90%;
+        display: flex;
+    }
+
+    .titlepromotion{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    .promotion{
+        width: 100%;
+        margin: 10px;
+    }
+
+    .title-box{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .title-item{
+        width: 100%;
+    }
+    .title-box .title-item:nth-child(1){
+        width: 100%;
+    }
+    .title-box .title-item:nth-child(6){
+        width: 100%;
+    }
+}

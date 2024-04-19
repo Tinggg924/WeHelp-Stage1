@@ -1,0 +1,165 @@
+<!--Task 3: Parse data from internet and render as HTML by JavaScript
+Here is URL for tourist spots in Taipei provided by Taipei City Government:
+https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1
+We have to write JavaScript code to parse spot data from the above URL, and render them
+in the page completed in week 1, without third-party libraries.
+Steps and Details:
+1. Connect to the URL to retrieve data by JavaScript after the page loads.
+2. Render retrieved data as spot list in the page, following the same layout design as
+assignment in week 1. We only render the title and first image for each spot. Use at
+least document.createElement() and appendChild() methods to complete rendering.
+Don’t use innerHTML.
+3. Render the first 3 spots in the small boxes, following 10 spots in the big boxes,
+ignoring others -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="Week1.css">
+</head>
+
+<body>
+    <script>
+
+    </script>
+    <nav>
+        <div class="title">My Website</div>
+        <ul class="desktop-menu">
+            <li class="item">Item1</li>
+            <li class="item">Item2</li>
+            <li class="item">Item3</li>
+            <li class="item">Item4</li>
+            <div class="burger-menu" onclick="mobilemenu()">
+                <img src="burger.png" id="burger" />
+            </div>
+        </ul>
+        <div id="popupmenu" class="popup-menu">
+            <div class="close" onclick="closemenu()">x</div>
+            <li class="list">Item1</li>
+            <li class="list">Item2</li>
+            <li class="list">Item3</li>
+            <li class="list">Item4</li>
+        </div>
+
+    </nav>
+
+    <div class="topic">Welcome to My Home</div>
+
+    <div class="maincontent">
+        <div class="titlepromotion">
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 1</div>
+            </div>
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 2</div>
+            </div>
+            <div class="promotion">
+                <img src="rabbit.jpg">
+                <div class="promotion-title">Promotion 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="title-box">
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 1</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 2</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 3</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 4</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 5</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 6</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 7</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 8</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 9</div>
+            </div>
+            <div class="title-item">
+                <img src="rabbit.jpg" id="spotpic">
+                <img src="carrot.png" id="icon">
+                <div class="titletext">Title 10</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getData() {
+            fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(
+                function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    for (let i = 0; i < 3; i++) {
+                        let product = data.data.results[i];
+                        const imageElement = document.querySelectorAll(".promotion img")[i];
+                        const imageUrl = product.filelist.split("https://")[1].split(" ")[0];
+                        imageElement.src = "https://" + imageUrl;
+
+                        const textElement = document.querySelectorAll(".promotion-title")[i];
+                        const spotText = product.stitle;
+                        textElement.innerText = spotText;
+                    }
+
+                    for (let j = 0; j < 13; j++) {
+                        let product = data.data.results[j+3];
+                        const imageElement = document.querySelectorAll("#spotpic")[j];
+                        const imageUrl = product.filelist.split("https://")[1].split(" ")[0];
+                        imageElement.src = "https://" + imageUrl;
+
+                        const textElement = document.querySelectorAll(".titletext")[j];
+                        const spotText = product.stitle;
+                        textElement.innerText = spotText;
+                    }
+                });
+        }
+        getData()
+
+        function mobilemenu() {
+            let popupmenu = document.getElementById("popupmenu");
+            popupmenu.classList.toggle("active");
+        }
+
+        function closemenu() {
+            let popupmenu = document.getElementById("popupmenu");
+            popupmenu.classList.remove("active");
+        }
+    </script>
+
+</body>
