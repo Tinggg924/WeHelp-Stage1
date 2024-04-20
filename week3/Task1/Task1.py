@@ -34,11 +34,11 @@ def get_mrt_data():
     return mrt_data
 mrt_data=get_mrt_data()
 
-import csv
-with open("mrt.csv", mode="w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
-    for mrt, spots in mrt_data.items():
-        writer.writerow([mrt] + spots)
+
+with open("mrt.csv", "w", newline="", encoding="utf-8") as csvfile:
+    for station, attractions in mrt_data.items():
+        attractions_str="," .join(attractions)
+        csvfile.write("{},{}\n".format(station, attractions_str))
 
 import urllib.request as request
 import json
