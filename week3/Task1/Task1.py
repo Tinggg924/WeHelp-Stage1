@@ -38,8 +38,7 @@ import csv
 with open("mrt.csv", mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     for mrt, spots in mrt_data.items():
-        spots_str = ",".join(spots)
-        writer.writerow([mrt, spots_str])
+        writer.writerow([mrt] + spots)
 
 import urllib.request as request
 import json
