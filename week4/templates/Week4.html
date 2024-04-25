@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="/static/Week4.css">
+</head>
+
+<body>
+    <div class="title">歡迎光臨，請輸入帳號密碼</div>
+    <div class="sign">
+        登入系統
+    </div>
+    <form id="signinForm" action="/signin" method="post">
+        <div class="userInfo">
+            <div class="account">帳號
+                <div class="typeInfo"><input type="text" name="username"></div>
+            </div>
+            <div class="password">密碼
+                <div class="typeInfo"><input type="password" name="password"></div>
+            </div>
+        </div>
+        <div class="agreement">
+            同意條款 <input type="checkbox" id="agreementCheckbox" name="agreement">
+        </div>
+        <div align="center"><button type="submit" id="submitButton">
+                登入
+            </button></div>
+    </form>
+    <script>
+        document.getElementById("signinForm").addEventListener("submit", function (event) {
+            if (!document.getElementById("agreementCheckbox").checked) {
+                alert("請先勾選同意條款");
+                event.preventDefault();
+            }
+            else {
+                return true
+            }
+        });
+    </script>
+</body>
+
+</html>
