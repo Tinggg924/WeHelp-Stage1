@@ -70,32 +70,66 @@ update member SET name = "test2" where username = "test";
 ## Task 4: SQL Aggregation Functions
 -  SELECT how many rows from the member table.
 ```
-
+select count(*) from `member`;
 ```
-![Task 4]()
+![Task 4](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task4-1.png)
 
 - SELECT the sum of follower_count of all the rows from the member table.
 ```
-
+select SUM(follower_count) from `member`;
 ```
-![Task 4]()
+![Task 4](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task4-2.png)
 
 - SELECT the average of follower_count of all the rows from the member table.
 ```
-
+select AVG(follower_count) from `member`;
 ```
-![Task 4]()
+![Task 4](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task4-3.png)
 
 - SELECT the average of follower_count of the first 2 rows, in descending order of
 follower_count, from the member table.
 ```
-
+select AVG(follower_count)
+from (
+    select follower_count
+    from `member`
+    order by follower_count DESC
+    LIMIT 2
+) AS subquery;
 ```
-![Task 4]()
+![Task 4](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task4-4.png)
 
 ## Task 5: SQL JOIN
--  
+- Create a new table named message, in the website database. designed as below:
 ```
 
 ```
-![Task 4]()
+![Task 5]()
+
+- SELECT all messages, including sender names. We have to JOIN the member table
+to get that.
+```
+
+```
+![Task 5]()
+
+- SELECT all messages, including sender names, where sender username equals to
+test. We have to JOIN the member table to filter and get that.
+```
+
+```
+![Task 5]()
+
+- Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like
+count of messages where sender username equals to test.
+```
+
+```
+![Task 5]()
+
+-  Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like
+count of messages GROUP BY sender username.
+```
+
+```
+![Task 5]()
