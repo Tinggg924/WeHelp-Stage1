@@ -95,41 +95,49 @@ from (
     from `member`
     order by follower_count DESC
     LIMIT 2
-) AS subquery;
+) as subquery;
 ```
 ![Task 4](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task4-4.png)
 
 ## Task 5: SQL JOIN
 - Create a new table named message, in the website database. designed as below:
 ```
-
+use `website`;
+create table `message` (
+  `id` bigint primary key auto_increment comment 'Unique ID',
+  `member_id` bigint not null comment 'Member ID for Message Sender', 
+  foreign key (`member_id`) references `message`(`id`),
+  `content` varchar(255) not null comment 'Content',
+  `like_count` int unsigned not null default 0 comment 'Like Count',
+  `time` datetime not null default CURRENT_TIMESTAMP comment 'Publish Time'
+);
 ```
-![Task 5]()
+![Task 5](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task5-1.png)
 
 - SELECT all messages, including sender names. We have to JOIN the member table
 to get that.
 ```
-
+select `message`.*, member.name as sender_names from `message` inner join member ON `member`.id = `message`.member_id;
 ```
-![Task 5]()
+![Task 5](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task5-2.png)
 
 - SELECT all messages, including sender names, where sender username equals to
 test. We have to JOIN the member table to filter and get that.
 ```
-
+select `message`.*, member.name as sender_names from `message` inner join member ON `member`.id = `message`.member_id where username = 'test';
 ```
-![Task 5]()
+![Task 5](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task5-3.png)
 
 - Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like
 count of messages where sender username equals to test.
 ```
-
+select AVG(`message`.like_count) from (`message` inner join member ON `member`.id = `message`.member_id) where `member`.username = 'test';
 ```
-![Task 5]()
+![Task 5](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task5-4.png)
 
 -  Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like
 count of messages GROUP BY sender username.
 ```
-
+select `member`.username as sender_names, AVG(`message`.like_count) as average_like_count from `message` inner join member ON `member`.id = `message`.member_id group by member.username;
 ```
-![Task 5]()
+![Task 5](https://github.com/Tinggg924/WeHelp-Stage1/blob/main/week5/Task%20images/Task5-5.png)
